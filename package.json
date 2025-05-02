@@ -4,21 +4,24 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "next build && shx cp -r public .next/standalone/ && shx cp -r .next/static .next/standalone/.next/ && tar -czf .next/standalone.tar.gz -C .next standalone",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@xyflow/react": "^12.5.6",
+    "next": "15.2.5",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "next": "15.2.5"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4"
+    "mongodb": "^6.16.0",
+    "shx": "^0.4.0",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }

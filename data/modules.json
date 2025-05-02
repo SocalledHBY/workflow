@@ -1,0 +1,32 @@
+[
+    {
+        "name": "JPG转PNG",
+        "input": "",
+        "output": ""
+    },
+    {
+        "name": "获取天气信息",
+        "input": "",
+        "output": ""
+    },
+    {
+        "name": "PDF提取页面",
+        "input": "",
+        "output": ""
+    },
+    {
+        "name": "图像风格化",
+        "input": "",
+        "output": ""
+    },
+    {
+        "name": "音频降噪",
+        "input": "",
+        "output": ""
+    },
+    {
+        "name": "文本翻译",
+        "input": "",
+        "output": ""
+    }
+]
