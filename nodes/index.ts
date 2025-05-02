@@ -1,42 +1,21 @@
-import type { Node, NodeTypes, BuiltInNode } from "@xyflow/react";
-import { PositionLoggerNode } from "./positionLoggerNode";
+import type { BuiltInNode } from "@xyflow/react";
 
-export type PositionLoggerNode = Node<
-  {
-    label?: string;
-  },
-  "position-logger"
->;
-
-export type AppNode = BuiltInNode | PositionLoggerNode;
-
-export const initialNodes: AppNode[] = [
+export const initialNodes: BuiltInNode[] = [
   {
     id: "a",
     type: "input",
-    position: { x: 0, y: 0 },
-    data: { label: "wirte" }
+    position: { x: 0, y: -100 },
+    data: { label: "1. Add modules on the left" }
   },
   {
     id: "b",
-    type: "position-logger",
-    position: { x: -100, y: 100 },
-    data: { label: "drag me!" }
+    position: { x: 0, y: 0 },
+    data: { label: "2. Connect modules in order" }
   },
   {
     id: "c",
-    position: { x: 100, y: 100 },
-    data: { label: "your ideas" }
-  },
-  {
-    id: "d",
     type: "output",
-    position: { x: 0, y: 200 },
-    data: { label: "with React Flow" }
-  },
+    position: { x: 0, y: 100 },
+    data: { label: "3. Run your own workflow" }
+  }
 ];
-
-export const nodeTypes = {
-  "position-logger": PositionLoggerNode,
-  // Add any of your custom nodes here!
-} satisfies NodeTypes;

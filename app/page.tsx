@@ -9,14 +9,15 @@ import {
   addEdge,
   getIncomers,
   getOutgoers,
-  type OnConnect
+  type OnConnect,
+  BuiltInNode
 } from "@xyflow/react";
 import { SiderItems } from "@/components/siderItems";
 
 import '@xyflow/react/dist/style.css';
 
-import { AppNode, initialNodes, nodeTypes } from "../nodes";
-import { initialEdges, edgeTypes } from "../edges";
+import { initialNodes } from "../nodes";
+import { initialEdges } from "../edges";
 
 function Home() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
@@ -33,8 +34,8 @@ function Home() {
     }
     const rootNode = nodes[0];
 
-    const previousNodes: AppNode[] = [];
-    function getPrevious(node: AppNode) {
+    const previousNodes: BuiltInNode[] = [];
+    function getPrevious(node: BuiltInNode) {
       previousNodes.push(node);
       const incomers = getIncomers({ id: node.id }, nodes, edges);
       if (incomers.length === 0) {
@@ -47,8 +48,8 @@ function Home() {
       getPrevious(rootIncomers[0]);
     }
 
-    const nextNodes: AppNode[] = [];
-    function getNext(node: AppNode) {
+    const nextNodes: BuiltInNode[] = [];
+    function getNext(node: BuiltInNode) {
       nextNodes.push(node);
       const outgoers = getOutgoers({ id: node.id }, nodes, edges);
       if (outgoers.length === 0) {
@@ -89,10 +90,8 @@ function Home() {
       <div className="w-full h-screen bg-gray-100">
         <ReactFlow
           nodes={nodes}
-          nodeTypes={nodeTypes}
           onNodesChange={onNodesChange}
           edges={edges}
-          edgeTypes={edgeTypes}
           onEdgesChange={onEdgesChange}
           onConnect={onConnect}
           fitView
