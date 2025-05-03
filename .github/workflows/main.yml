@@ -35,4 +35,4 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          script: /root/workflow/deploy.sh
+          script_path: /root/workflow/deploy.sh
