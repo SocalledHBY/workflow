@@ -20,16 +20,15 @@ jobs:
         run: npm install
       - name: Build project
         run: npm run build && cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/
-      - name: Show folder structure
-        run: ls -a && ls -a .next
       - name: Transfer to server
         uses: appleboy/scp-action@v1
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          source: ".next/standalone"
+          source: .next/standalone
           target: /root/workflow/temp
+          strip_components: 1
       - name: Deploy on server
         uses: appleboy/ssh-action@v1
         with:
