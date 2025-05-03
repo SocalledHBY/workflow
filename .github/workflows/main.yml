@@ -30,7 +30,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           source: .next/standalone
-          target: /root/workflow/temp
+          target: ~/workflow/temp
           strip_components: 1
       - name: Deploy on server
         uses: appleboy/ssh-action@v1
@@ -38,4 +38,4 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          script: /root/workflow/deploy.sh
+          script: ~/workflow/deploy.sh
