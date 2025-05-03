@@ -19,7 +19,10 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Build project
-        run: npm run build && cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/
+        run: |
+          npm run build
+          cp -r public .next/standalone/
+          cp -r .next/static .next/standalone/.next/
       - name: Transfer to server
         uses: appleboy/scp-action@v1
         with:
@@ -35,4 +38,4 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          script_path: /root/workflow/deploy.sh
+          script: /root/workflow/deploy.sh
