@@ -79,15 +79,14 @@ function Home() {
   }
 
   return (
-    <div className="flex">
-      <div className="w-72 h-screen bg-gray-600 select-none">
+    <div className="flex h-screen">
+      <div className="w-72 bg-gray-600 select-none">
         <div className="w-full py-5 text-center text-xl font-semibold tracking-widest text-white bg-gray-800">
           WORKFLOW
         </div>
         <SiderItems addModuleBlock={addModuleBlock} />
-        <div className="mx-12 border-2 bg-gray-200 rounded-xl text-center cursor-pointer" onClick={getWorkflow}>获取Workflow</div>
       </div>
-      <div className="w-full h-screen bg-gray-100">
+      <div className="w-full bg-gray-100">
         <ReactFlow
           nodes={nodes}
           onNodesChange={onNodesChange}
@@ -100,6 +99,14 @@ function Home() {
           <Background />
           <Controls />
         </ReactFlow>
+      </div>
+      <div className="fixed bottom-8 right-8 w-14 h-14 rounded-[50%] shadow-lg/40 transition hover:scale-110">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <g className="cursor-pointer" onClick={getWorkflow}>
+            <circle cx="12" cy="12" r="12" className="fill-gray-800" />
+            <polygon points="10,8 16,12 10,16" className="fill-gray-200" />
+          </g>
+        </svg>
       </div>
     </div>
   );
