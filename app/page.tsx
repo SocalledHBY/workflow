@@ -1,5 +1,5 @@
 "use client";
-import { useState, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import {
   Background,
   Controls,
@@ -12,14 +12,19 @@ import {
   type OnConnect,
   BuiltInNode
 } from "@xyflow/react";
-import { SiderItems } from "@/components/siderItems";
+import { SiderItem } from "@/components/siderItem";
 
 import '@xyflow/react/dist/style.css';
 
 import { initialNodes } from "../nodes";
 import { initialEdges } from "../edges";
 
+type Module = {
+  name: string;
+}
+
 function Home() {
+  const [modules, setModules] = useState<Module[]>([]);
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [nextId, setNextId] = useState(0);
@@ -27,6 +32,17 @@ function Home() {
     (connection) => setEdges((edges) => addEdge(connection, edges)),
     [setEdges]
   );
+
+  useEffect(() => {
+    fetch(`${process.env.API_URL}/modules`)
+      .then(res => res.json())
+      .then(data => setModules(data))
+      .catch(err => {
+        console.error("Error fetching modules:", err);
+        return [];
+      });
+  }, []);
+  const moduleNames = modules.map((module: { name: string }) => module.name);
 
   function getWorkflow() {
     if (nodes.length === 0) {
@@ -84,7 +100,9 @@ function Home() {
         <div className="w-full py-5 text-center text-xl font-semibold tracking-widest text-white bg-gray-800">
           WORKFLOW
         </div>
-        <SiderItems addModuleBlock={addModuleBlock} />
+        <div>
+          { moduleNames.map((module: string, index: number) => <SiderItem key={index} name={module} onClick={addModuleBlock} />) }
+        </div>
       </div>
       <div className="w-full bg-gray-100">
         <ReactFlow
