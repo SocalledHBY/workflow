@@ -1,32 +1,46 @@
 [
     {
-        "name": "JPG转PNG",
-        "input": "",
-        "output": ""
+        "mid": 1,
+        "name": "获取时间",
+        "input": {
+            "type": "text",
+            "name": "timezone",
+            "required": false,
+            "default": "Asia/Shanghai"
+        },
+        "output": {
+            "type": "text",
+            "name": "time",
+            "default": ""
+        }
     },
     {
-        "name": "获取天气信息",
-        "input": "",
-        "output": ""
+        "mid": 2,
+        "name": "获取天气",
+        "input": {
+            "type": "text",
+            "name": "location",
+            "required": false,
+            "default": "北京"
+        },
+        "output": {
+            "type": "text",
+            "name": "weather",
+            "default": ""
+        }
     },
     {
-        "name": "PDF提取页面",
-        "input": "",
-        "output": ""
-    },
-    {
-        "name": "图像风格化",
-        "input": "",
-        "output": ""
-    },
-    {
-        "name": "音频降噪",
-        "input": "",
-        "output": ""
-    },
-    {
-        "name": "文本翻译",
-        "input": "",
-        "output": ""
+        "mid": 3,
+        "name": "生成txt文件",
+        "input": {
+            "type": "text",
+            "name": "content",
+            "required": true
+        },
+        "output": {
+            "type": "text",
+            "name": "filepath",
+            "default": ""
+        }
     }
 ]

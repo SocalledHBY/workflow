@@ -1,10 +1,10 @@
-export function SiderItem({name, onClick}: {name: string, onClick: (name: string) => void}) {
+export default function SiderItem({ mid, name, onClick }: { mid: number, name: string, onClick: (mid: number, name: string) => void }) {
   function handleClick() {
-    onClick(name);
+    onClick(mid, name);
   }
   
   return (
-    <div onClick={handleClick} className="py-1 text-center text-gray-200 cursor-pointer transition hover:font-medium hover:scale-105">
+    <div onClick={handleClick} className="py-1 text-center text-gray-100 cursor-pointer transition duration-100 hover:bg-gray-700">
       {name}
     </div>
   )
