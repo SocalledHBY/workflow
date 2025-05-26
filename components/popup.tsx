@@ -1,28 +1,28 @@
 import { useState, useEffect } from "react";
 
 export default function Popup({ result, visible, onClose }: { result: string, visible: boolean, onClose: () => void }) {
-  const [opacity, setOpacity] = useState(visible ? 100 : 0);
+  const [isVisible, setIsVisible] = useState(visible);
 
   useEffect(() => {
-    setOpacity(visible ? 100 : 0);
+    setIsVisible(visible);
   }, [visible]);
 
   function onTransitionStart(e: React.TransitionEvent<HTMLElement>) {
     const target = e.target as HTMLElement;
-    if (visible) {
+    if (isVisible) {
       target.style.visibility = 'visible';
     }
   }
 
   function onTransitionEnd(e: React.TransitionEvent<HTMLElement>) {
     const target = e.target as HTMLElement;
-    if (!visible) {
+    if (!isVisible) {
       target.style.visibility = 'hidden';
     }
   }
 
   return (
-    <div id="popup" className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-8 z-50 bg-white rounded-lg shadow-2xl transition duration-150 opacity-${opacity}`}
+    <div className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-8 z-50 bg-white rounded-lg shadow-2xl transition duration-150 invisible ${isVisible ? "opacity-100" : "opacity-0"}`}
       onTransitionStart={onTransitionStart}
       onTransitionEnd={onTransitionEnd}>
       <div className="text-lg font-semibold mb-4">运行结果</div>

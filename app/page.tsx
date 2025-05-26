@@ -169,7 +169,7 @@ function Home() {
           </g>
         </svg>
       </div>
-      <Popup result={result} visible={showPopup} onClose={() => setShowPopup(false)} />
+      <Popup result={result} visible={showPopup} onClose={() => setShowPopup(false) } />
     </div>
   );
 };
